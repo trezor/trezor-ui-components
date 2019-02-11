@@ -130,8 +130,20 @@ class Pin extends PureComponent {
         const { pin } = this.state;
         return (
             <Wrapper>
-                <H2>Enter { device.label } PIN</H2>
-                <P isSmaller>The PIN layout is displayed on your Trezor.</P>
+                {
+                    this.props.header ? (
+                        <React.Fragment>
+                            {this.props.header}
+                        </React.Fragment>
+                        )
+                    : (
+                        <React.Fragment>
+                            <H2>Enter { device.label } PIN</H2>
+                            <P isSmaller>The PIN layout is displayed on your Trezor.</P>
+                        </React.Fragment>
+                    )
+                }
+                
                 <InputRow>
                     <PinInput value={pin} onDeleteClick={() => this.onPinBackspace()} />
                 </InputRow>
