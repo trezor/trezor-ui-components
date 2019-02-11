@@ -180,6 +180,7 @@ class Pin extends PureComponent {
 Pin.propTypes = {
     device: PropTypes.object.isRequired,
     onPinSubmit: PropTypes.func.isRequired,
+    header: PropTypes.object,
 };
 
 export default Pin;
