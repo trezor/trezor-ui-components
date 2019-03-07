@@ -1,16 +1,18 @@
 import { addDecorator, configure } from '@storybook/react';
-import { withOptions } from '@storybook/addon-options';
 import { withInfo } from '@storybook/addon-info';
-import { configureViewport } from '@storybook/addon-viewport';
+import { addParameters } from '@storybook/react'; // or others
 import colors from '../src/config/colors';
+import { create } from '@storybook/theming';
 
-addDecorator(
-    withOptions({
-        name: 'Trezor UI Components',
-        url: '#',
-        addonPanelInRight: true,
-        theme: {
-            mainBackground: colors.BACKGROUND,
+addParameters({
+    options: {
+      theme: create({
+        base: 'light',
+        brandTitle: 'Trezor UI Components',
+        brandUrl: '#',
+        // To control appearance:
+        // brandImage: 'http://url.of/some.svg',
+        mainBackground: colors.BACKGROUND,
             mainBorder: `1px solid ${colors.DIVIDER}`,
             mainFill: colors.WHITE,
             barFill: colors.GRAY_LIGHT,
@@ -32,11 +34,11 @@ addDecorator(
                 color: colors.GREEN_PRIMARY,
                 background: 'none',
             },
-        },
-    }),
-);
-
-configureViewport();
+      }),
+      isFullscreen: false,
+      panelPosition: 'right',
+    },
+  });
 
 function loadStories() {
     require('stories/components/text.js');
