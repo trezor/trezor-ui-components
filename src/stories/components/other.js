@@ -13,6 +13,7 @@ import Icon from 'components/Icon';
 import { H1 } from 'components/Heading';
 import Prompt from 'components/Prompt';
 import Header from 'components/Header';
+import LanguagePicker from 'components/LanguagePicker';
 
 import colors from 'config/colors';
 import icons from 'config/icons';
@@ -303,6 +304,55 @@ storiesOf('Other', module)
         ## Import
         ~~~js
         import { Header } from 'trezor-ui-components';
+        ~~~
+        `,
+            },
+        }
+    )
+    .addDecorator(StoryRouter())
+    .add(
+        'LanguagePicker',
+        () => {
+            const language = select(
+                'language',
+                {
+                    en: 'en',
+                    bn: 'bn',
+                    cs: 'cs',
+                    de: 'de',
+                },
+                'en'
+            );
+            return (
+                <div
+                    style={{
+                        backgroundColor: colors.HEADER,
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                    data-test="language_picker"
+                >
+                    <LanguagePicker
+                        language={language}
+                        onChange={(value, action) => {
+                            console.log(`value changed. value: ${JSON.stringify(value)} action: ${JSON.stringify(action)}`);
+                        }}
+                        languages={[
+                            { code: 'en', name: 'English', en: 'English' },
+                            { code: 'bn', name: 'Bengali', en: 'Bengali' },
+                            { code: 'cs', name: 'Česky', en: 'Czech' },
+                            { code: 'de', name: 'Deutsch', en: 'German' },
+                        ]}
+                    />
+                </div>
+            );
+        },
+        {
+            info: {
+                text: `
+        ## Import
+        ~~~js
+        import { LanguagePicker } from 'trezor-ui-components';
         ~~~
         `,
             },
