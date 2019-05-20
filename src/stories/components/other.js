@@ -330,9 +330,9 @@ storiesOf('Other', module)
                         display: 'flex',
                         justifyContent: 'center',
                     }}
-                    data-test="language_picker"
                 >
                     <LanguagePicker
+                        data-test="language_picker"
                         language={language}
                         onChange={(value, action) => {
                             console.log(`value changed. value: ${JSON.stringify(value)} action: ${JSON.stringify(action)}`);

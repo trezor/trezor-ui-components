@@ -107,8 +107,8 @@ interface Props {
     languages: Array<Language>;
 }
 
-const LanguagePicker = ({ language, languages, onChange }: Props) => (
-    <SelectWrapper>
+const LanguagePicker = ({ language, languages, onChange, ...rest }: Props) => (
+    <SelectWrapper {...rest}>
         <SelectIcon role="img" aria-label="Select language">
             <svg width="21" height="15">
                 <image
